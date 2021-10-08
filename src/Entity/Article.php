@@ -34,9 +34,15 @@ class Article
      */
     private $galerie;
 
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="articles")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->galerie = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,6 +94,36 @@ class Article
     public function removeGalerie(Image $galerie): self
     {
         $this->galerie->removeElement($galerie);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setArticles($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getArticles() === $this) {
+                $user->setArticles(null);
+            }
+        }
 
         return $this;
     }

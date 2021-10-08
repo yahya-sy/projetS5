@@ -29,6 +29,12 @@ class Image
      */
     private $ref;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Pagedacceuil::class, inversedBy="galerie")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $pagedacceuil;
+
     public function __construct()
     {
         $this->ref = new ArrayCollection();
@@ -74,6 +80,18 @@ class Image
         if ($this->ref->removeElement($ref)) {
             $ref->removeGalerie($this);
         }
+
+        return $this;
+    }
+
+    public function getPagedacceuil(): ?Pagedacceuil
+    {
+        return $this->pagedacceuil;
+    }
+
+    public function setPagedacceuil(?Pagedacceuil $pagedacceuil): self
+    {
+        $this->pagedacceuil = $pagedacceuil;
 
         return $this;
     }

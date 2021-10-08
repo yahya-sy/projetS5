@@ -22,6 +22,11 @@ class Reponseoffre
      */
     private $texte;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Offreemploi::class, mappedBy="reponse", cascade={"persist", "remove"})
+     */
+    private $offreemploi;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +40,28 @@ class Reponseoffre
     public function setTexte(string $texte): self
     {
         $this->texte = $texte;
+
+        return $this;
+    }
+
+    public function getOffreemploi(): ?Offreemploi
+    {
+        return $this->offreemploi;
+    }
+
+    public function setOffreemploi(?Offreemploi $offreemploi): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($offreemploi === null && $this->offreemploi !== null) {
+            $this->offreemploi->setReponse(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($offreemploi !== null && $offreemploi->getReponse() !== $this) {
+            $offreemploi->setReponse($this);
+        }
+
+        $this->offreemploi = $offreemploi;
 
         return $this;
     }

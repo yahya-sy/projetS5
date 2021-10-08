@@ -27,6 +27,11 @@ class Offreemploi
      */
     private $titre;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Reponseoffre::class, inversedBy="offreemploi", cascade={"persist", "remove"})
+     */
+    private $reponse;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Offreemploi
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
+
+        return $this;
+    }
+
+    public function getReponse(): ?Reponseoffre
+    {
+        return $this->reponse;
+    }
+
+    public function setReponse(?Reponseoffre $reponse): self
+    {
+        $this->reponse = $reponse;
 
         return $this;
     }
