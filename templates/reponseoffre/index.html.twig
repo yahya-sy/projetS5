@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reponseoffre index{% endblock %}
+
+{% block body %}
+    <h1>Reponseoffre index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Texte</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reponseoffre in reponseoffres %}
+            <tr>
+                <td>{{ reponseoffre.id }}</td>
+                <td>{{ reponseoffre.texte }}</td>
+                <td>
+                    <a href="{{ path('reponseoffre_show', {'id': reponseoffre.id}) }}">show</a>
+                    <a href="{{ path('reponseoffre_edit', {'id': reponseoffre.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reponseoffre_new') }}">Create new</a>
+{% endblock %}

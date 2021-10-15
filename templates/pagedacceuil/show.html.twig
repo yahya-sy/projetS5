@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pagedacceuil{% endblock %}
+
+{% block body %}
+    <h1>Pagedacceuil</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pagedacceuil.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('pagedacceuil_index') }}">back to list</a>
+
+    <a href="{{ path('pagedacceuil_edit', {'id': pagedacceuil.id}) }}">edit</a>
+
+    {{ include('pagedacceuil/_delete_form.html.twig') }}
+{% endblock %}

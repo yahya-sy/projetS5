@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Demandeprojet{% endblock %}
+
+{% block body %}
+    <h1>Create new Demandeprojet</h1>
+
+    {{ include('demandeprojet/_form.html.twig') }}
+
+    <a href="{{ path('demandeprojet_index') }}">back to list</a>
+{% endblock %}
