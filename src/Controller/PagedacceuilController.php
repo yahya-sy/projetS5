@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/pagedacceuil')]
+#[Route('/')]
 class PagedacceuilController extends AbstractController
 {
     #[Route('/', name: 'pagedacceuil_index', methods: ['GET'])]
