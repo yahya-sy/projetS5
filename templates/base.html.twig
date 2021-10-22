@@ -5,17 +5,18 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
+        <link rel="steelsheet" href="https://bootswatch.com/5/sandstone/bootstrap.min.css">
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
     </head>
     <body>
-      {% include 'Navbar_Footer/nav.html.twig' %}
-      {% block body %}{% endblock %}
-      {% include 'Navbar_Footer/footer.html.twig' %}    
+        {% include 'nav.html.twig' %}
+        {% block body %}{% endblock %}
+        {% include 'footer.html.twig' %}  
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}  
     </body>
 </html>
