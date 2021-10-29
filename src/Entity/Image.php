@@ -20,14 +20,14 @@ class Image
     private $id;
 
     /**
-     * @ORM\Column(type="blob")
-     */
-    private $fichierimg;
+         * @ORM\Column(type="string", length=255)
+         */
+        private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="galerie")
-     */
-    private $ref;
+         * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="images")
+         */
+        private $article;
 
     /**
      * @ORM\ManyToOne(targetEntity=Pagedacceuil::class, inversedBy="galerie")
@@ -35,51 +35,30 @@ class Image
      */
     private $pagedacceuil;
 
-    public function __construct()
-    {
-        $this->ref = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
     }
+    public function getName(): ?string
+        {
+            return $this->name;
+        }
 
-    public function getFichierimg()
+    public function setName(string $name): self
     {
-        return $this->fichierimg;
-    }
-
-    public function setFichierimg($fichierimg): self
-    {
-        $this->fichierimg = $fichierimg;
+        $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return Collection|Article[]
-     */
-    public function getRef(): Collection
-    {
-        return $this->ref;
-    }
-
-    public function addRef(Article $ref): self
-    {
-        if (!$this->ref->contains($ref)) {
-            $this->ref[] = $ref;
-            $ref->addGalerie($this);
+    public function getArticle(): ?Article
+        {
+            return $this->article;
         }
 
-        return $this;
-    }
-
-    public function removeRef(Article $ref): self
+    public function setArticle(?Article $article): self
     {
-        if ($this->ref->removeElement($ref)) {
-            $ref->removeGalerie($this);
-        }
+        $this->article = $article;
 
         return $this;
     }

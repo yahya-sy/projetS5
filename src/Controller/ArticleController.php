@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
-use App\Form\ArticleType;
+use App\Form\Article1Type;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,14 +21,32 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'article_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'article_new', methods: ['GET','POST'])]
     public function new(Request $request): Response
     {
         $article = new Article();
-        $form = $this->createForm(ArticleType::class, $article);
+        $form = $this->createForm(Article1Type::class, $article);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
+            // On récupère les images transmises
+            $images = $form->get('images')->getData();
+            foreach($images as $image){
+                    // On génère un nouveau nom de fichier
+                    $fichier = md5(uniqid()).'.'.$image->guessExtension();
+
+                    // On copie le fichier dans le dossier uploads
+                    $image->move(
+                        $this->getParameter('images_directory'),
+                        $fichier
+                    );
+                    $img = new Images();
+                    $img->setName($fichier);
+                    $annonce->addImage($img);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
             $entityManager->flush();
@@ -50,14 +68,32 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'article_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'article_edit', methods: ['GET','POST'])]
     public function edit(Request $request, Article $article): Response
     {
-        $form = $this->createForm(ArticleType::class, $article);
+        $form = $this->createForm(Article1Type::class, $article);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            // On récupère les images transmises
+            $images = $form->get('images')->getData();
+            foreach($images as $image){
+                    // On génère un nouveau nom de fichier
+                    $fichier = md5(uniqid()).'.'.$image->guessExtension();
+
+                    // On copie le fichier dans le dossier uploads
+                    $image->move(
+                        $this->getParameter('images_directory'),
+                        $fichier
+                    );
+                    $img = new Images();
+                    $img->setName($fichier);
+                    $annonce->addImage($img);
+            }
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
 
             return $this->redirectToRoute('article_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -78,5 +114,29 @@ class ArticleController extends AbstractController
         }
 
         return $this->redirectToRoute('article_index', [], Response::HTTP_SEE_OTHER);
+    }
+    /**
+     * @Route("/supprime/image/{id}", name="annonces_delete_image", methods={"DELETE"})
+     */
+    public function deleteImage(Images $image, Request $request){
+        $data = json_decode($request->getContent(), true);
+
+        // On vérifie si le token est valide
+        if($this->isCsrfTokenValid('delete'.$image->getId(), $data['_token'])){
+            // On récupère le nom de l'image
+            $nom = $image->getName();
+            // On supprime le fichier
+            unlink($this->getParameter('images_directory').'/'.$nom);
+
+            // On supprime l'entrée de la base
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($image);
+            $em->flush();
+
+            // On répond en json
+            return new JsonResponse(['success' => 1]);
+        }else{
+            return new JsonResponse(['error' => 'Token Invalide'], 400);
+        }
     }
 }

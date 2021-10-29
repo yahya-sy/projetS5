@@ -14,7 +14,12 @@ class ArticleType extends AbstractType
         $builder
             ->add('titre')
             ->add('texte')
-            ->add('galerie')
+            ->add('images', FileType::class,[
+                 'label' => false,
+                 'multiple' => true,
+                 'mapped' => false,
+                 'required' => false
+            ])
         ;
     }
 
