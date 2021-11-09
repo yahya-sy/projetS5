@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/')]
+#[Route('/acceuil')]
 class PagedacceuilController extends AbstractController
 {
     #[Route('/', name: 'pagedacceuil_index', methods: ['GET'])]
@@ -42,11 +42,10 @@ class PagedacceuilController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'pagedacceuil_show', methods: ['GET'])]
-    public function show(Pagedacceuil $pagedacceuil): Response
+    public function show(PagedacceuilRepository $pagedacceuilRepository): Response
     {
         return $this->render('pagedacceuil/show.html.twig', [
-            'pagedacceuil' => $pagedacceuil,
+            'pagedacceuil' => $pagedacceuilRepository->findAll()[0],
         ]);
     }
 
