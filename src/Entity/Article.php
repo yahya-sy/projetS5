@@ -32,7 +32,7 @@ class Article
     /**
      * @ORM\ManyToMany(targetEntity=Image::class, inversedBy="ref")
      */
-    private $galerie;
+    private $images;
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="articles")
@@ -41,7 +41,7 @@ class Article
 
     public function __construct()
     {
-        $this->galerie = new ArrayCollection();
+        $this->images = new ArrayCollection();
         $this->users = new ArrayCollection();
     }
 
@@ -75,27 +75,32 @@ class Article
     }
 
     /**
-     * @return Collection|Image[]
+     * @return Collection|Images[]
      */
-    public function getGalerie(): Collection
+    public function getImages(): Collection
     {
-        return $this->galerie;
+        return $this->images;
     }
 
-    public function addGalerie(Image $galerie): self
+    public function addImages(Image $images): self
     {
-        if (!$this->galerie->contains($galerie)) {
-            $this->galerie[] = $galerie;
+        if (!$this->images->contains($images)) {
+            $this->images[] = $images;
         }
 
         return $this;
     }
 
-    public function removeGalerie(Image $galerie): self
+    public function removeImages(Image $images): self
     {
-        $this->galerie->removeElement($galerie);
-
-        return $this;
+            if ($this->images->contains($image)) {
+                $this->images->removeElement($image);
+                // set the owning side to null (unless already changed)
+                if ($image->getArticles() === $this) {
+                    $image->setArticles(null);
+                }
+            }
+            return $this;
     }
 
     /**
