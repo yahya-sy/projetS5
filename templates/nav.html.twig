@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Accueil</a>
+    <a class="" href="/"><img class="" alt="Logo" src="/Images/Logo.png"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,7 +12,7 @@
           <a class="nav-link" href="/">Accueil</a>
         </li>
         <li>
-          <a class="nav-link" href="#">Mes Créations</a>
+          <a class="nav-link" href={{ path('article_index') }}>Nos Créations</a>
         </li>
         <li>
           <a class="nav-link" href={{ path('offreemploi_index') }}>Rejoignez-nous</a>
@@ -22,7 +22,9 @@
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Search">
+        <label>
+          <input class="form-control me-sm-2" type="text" placeholder="Search">
+        </label>
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
