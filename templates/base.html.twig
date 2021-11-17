@@ -12,12 +12,12 @@
     {% endblock %}
 
 </head>
-    <body>
-    {% include 'nav.html.twig' %}
-    {% block body %} {% endblock %}
-    {% include 'footer.html.twig' %}
-    {% block javascripts %}
-        {# {{ encore_entry_script_tags('app') }} #}
-    {% endblock %}
-    </body>
+<body>
+{% include 'nav.html.twig' %}
+{% block body %} {% endblock %}
+</body>
+{% include 'footer.html.twig' %}
+{% block javascripts %}
+    {# {{ encore_entry_script_tags('app') }} #}
+{% endblock %}
 </html>

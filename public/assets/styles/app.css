@@ -3,17 +3,18 @@ p{
   text-align: justify;
 }
 
+body{
+  background-color: #9E5A37;
+}
+
 #div-accueil{
-  margin-inside: 20px;
-  margin-outside: 20px;
+  background-color: white;
   margin: 20px;
-  background-color: rosybrown;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 #plan{
-  margin-top: auto;
-  margin-bottom: auto;
-  padding: 5px;
   display: block;
   margin-left: auto;
   margin-right: auto
