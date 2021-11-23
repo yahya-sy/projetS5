@@ -15,14 +15,22 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\CustomCredentials;
 
-class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
+class LoginFormAuthenticator extends AbstractAuthenticator
 {
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_login';
 
-    private UrlGeneratorInterface $urlGenerator;
+    /*private UrlGeneratorInterface $urlGenerator;*/
+
+    public function supports(Request $request): ?bool
+    {
+        return ($request->getPathInfo() === '/login' && $request->isMethod('POST'));
+    }
 
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {
@@ -31,16 +39,16 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public function authenticate(Request $request): PassportInterface
     {
-        $email = $request->request->get('email', '');
+        $email = $request->request->get('email');
+        $password = $request->request->get('password');
 
-        $request->getSession()->set(Security::LAST_USERNAME, $email);
+        /*$request->getSession()->set(Security::LAST_USERNAME, $email);*/
 
         return new Passport(
             new UserBadge($email),
-            new PasswordCredentials($request->request->get('password', '')),
-            [
-                new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
-            ]
+            new CustomCredentials(function($credentials, User $user) {
+                dd($credentials, $user);
+            }, $password)
         );
     }
 
@@ -54,6 +62,13 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         //return new RedirectResponse($this->urlGenerator->generate('some_route'));
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
         return new RedirectResponse($this->urlGenerator->generate('/pagedacceuil'));
+    }
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
+    {
+        $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
+        return new RedirectResponse(
+            $this->router->generate('app_login')
+        );
     }
 
     protected function getLoginUrl(Request $request): string
