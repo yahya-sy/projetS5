@@ -3,64 +3,48 @@
 {% block title %}Pagedacceuil{% endblock %}
 
 {% block body %}
-    <div id="slider"">
-        <figure>
-            <img src="/Images/Charpentes/HPIM2911.JPG">
-            <img src="/Images/Charpentes/HPIM2929.JPG">
-            <img src="/Images/Couvertures/HPIM2918.JPG">
-            <img src="/Images/Ouvrages/HPIM2926.JPG">
-            <img src="/Images/Charpentes/HPIM2911.JPG">
-        </figure>
+    <div id="slider">
+    <figure>
+        <img src="/Images/Charpentes/HPIM2911.JPG">
+        <img src="/Images/Charpentes/HPIM2929.JPG">
+        <img src="/Images/Couvertures/HPIM2918.JPG">
+        <img src="/Images/Ouvrages/HPIM2926.JPG">
+        <img src="/Images/Charpentes/HPIM2911.JPG">
+    </figure>
     </div>
     <div id="div-accueil">
-        <table>
-            <tr>
-                <td id="présentation">
-                    <p id="txtpageaccueil">
-                        La société Legermain, jeune entreprise alliant créativité et dynamisme, vous propose de mettre
-                        son savoir
-                        faire à votre service.
-                        Pour vos travaux de charpente, couverture, escaliers et autres ouvrages spécifiques faites
-                        confiance à deux
-                        techniciens du bois, André Legermain et Philippe Troquin habitués à intervenir, notamment, sur
-                        des bâtiments
-                        classés Monuments Historiques.
-                    </p>
-                    <!-- IMG -->
+        <p id="txtpageaccueil">
+            <a id="imgpresentation" href={{ path('article_index') }}><img width="400px" height="auto" alt="image puit"
+                                                                          src="/Images/Couvertures/Puit.JPG"></a>
+            La société Legermain, jeune entreprise alliant créativité et dynamisme, vous propose de mettre
+            son savoir faire à votre service.
+            Pour vos travaux de charpente, couverture, escaliers et autres ouvrages spécifiques faites confiance à deux
+            techniciens du bois, André Legermain et Philippe Troquin habitués à intervenir, notamment, sur des bâtiments
+            classés Monuments Historiques.
+        </p>
 
-                    <p id="txtpageaccueil">
-                        Nos techniciens peuvent répondre à tout type de demandes. Il vous est en effet possible de
-                        demander tout
-                        type de produit, allant d'une charpente aux couvertures, en passant par des escaliers, rambardes
-                        et
-                        garde-corps, lucarnes et autres menuiseries artisanales de votre choix.
-                        Nos produits sont d'exellentes qualités et faites sur-mesures
-                    </p>
+        <!-- IMG -->
 
-                    <!-- IMG -->
+        <p id="txtpageaccueil">
+            Nos techniciens peuvent répondre à tout type de demandes. Il vous est en effet possible de demander tout
+            type de produit, allant d'une charpente aux couvertures, en passant par des escaliers, rambardes
+            et garde-corps, lucarnes et autres menuiseries artisanales de votre choix.
+            Nos produits sont d'exellentes qualités et faites sur-mesures
+        </p>
 
-                    <p id="txtpageaccueil">
-                        Habitué à travailler sur des bâtiments classés monuments historiques, nos techniciens du bois,
-                        André
-                        Legermain et Philippe Troquin sont tout deux très bien qualifiés.
-                        Notre entreprise est en effet certifée par Qualibat. Nos meunuisiers se sont également vu
-                        attribué le titre
-                        de maître artisant en 2018.
-                        Nous apportons un soin particulier à l’écoute et au conseil, deux points essentiels qui
-                        précédent la
-                        réalisation de vos ouvrages.
-                        Réaliser un travail artisanal, respectueux des traditions, tout en accordant notre prestation à
-                        votre
-                        budget, telle est notre ambition.
-                        N'hésitez pas à nous soumettres vos projets !
-                    </p>
-                </td>
-                <td id="présentation">
-                    <a href={{ path('article_index') }}><img width="400px" height="auto" alt="image puit"
-                                                             src="/Images/Couvertures/Puit.JPG"></a>
-                </td>
-            </tr>
-        </table>
+        <!-- IMG -->
+
+        <p id="txtpageaccueil">
+            Habitué à travailler sur des bâtiments classés monuments historiques, nos techniciens du bois,
+            André Legermain et Philippe Troquin sont tout deux très bien qualifiés.
+            Notre entreprise est en effet certifée par Qualibat. Nos meunuisiers se sont également vu
+            attribué le titre de maître artisant en 2018.
+            Nous apportons un soin particulier à l’écoute et au conseil, deux points essentiels qui
+            précédent la réalisation de vos ouvrages.
+            Réaliser un travail artisanal, respectueux des traditions, tout en accordant notre prestation à
+            votre budget, telle est notre ambition.
+            N'hésitez pas à nous soumettres vos projets !
+        </p>
     </div>
     <div id="div-accueil">
         <table>

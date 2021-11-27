@@ -1,7 +1,8 @@
 div#slider {
-    width: 80%;
+    width: auto;
     max-width: 1000px;
     overflow: hidden;
+    margin: 20px auto;
 }
 
 div#slider figure {
@@ -11,7 +12,7 @@ div#slider figure {
     padding: 0;
     font-size: 0;
     text-align: left;
-    animation: 15s slidy infinite;
+    animation: slidy 15s infinite;
 }
 
 div#slider figure img {
@@ -34,7 +35,6 @@ div#slider figure img {
 
 p {
     color: black;
-    text-align: justify;
     font-family: Calibri;
 }
 
@@ -44,12 +44,12 @@ body {
 
 #div-accueil {
     margin: 20px;
-    padding: 5px;
-    border-radius: 10px;
+    padding: 10px;
 }
 
-#présentation {
-    padding: 10px;
+#imgpresentation{
+    float: right;
+    padding-left: 20px;
 }
 
 #plan {
