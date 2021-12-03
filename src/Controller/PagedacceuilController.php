@@ -41,7 +41,7 @@ class PagedacceuilController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    #[Route('/accueil', name: 'pagedacceuil_show', methods: ['GET'])]
     public function show(PagedacceuilRepository $pagedacceuilRepository): Response
     {
         return $this->render('pagedacceuil/show.html.twig', [
