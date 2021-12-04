@@ -3,6 +3,14 @@
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+vich_uploader:
+    db_driver: orm
+
+    mappings :
+        product_image:
+            uri_prefix: /images/products
+            upload_destination: '%kernel.project_dir%/public/images/products'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 parameters:
     article_images: /uploads/images/articles
 services:
