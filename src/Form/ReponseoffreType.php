@@ -14,28 +14,28 @@ class ReponseoffreType extends AbstractType
         $builder
             ->add('Prenom',null, array(
                 'label' => 'Prénom : ',
-                'attr' => array('style' => 'width: 400px')
+                'attr' => array('style' => 'width: 200px')
             ))
             ->add('Nom',null, array(
                 'label' => 'Nom : ',
-                'attr' => array('style' => 'width: 400px')
+                'attr' => array('style' => 'width: 200px')
             ))
             ->add('email',null, array(
                 'label' => 'Email : ',
-                'attr' => array('style' => 'width: 400px')
+                'attr' => array('style' => 'width: 200px')
             ))
 
             ->add('Competences', null, array(
                 'label' => 'Competences : ',
-                'attr' => array('style' => 'width: 400px', 'height:400px')
+                'attr' => array('style' => 'height:400px')
             ))
 
-            ->add('listeTags',\Symfony\Bridge\Doctrine\Form\Type\EntityType::class, array(
+            ->add('offrechoisie',\Symfony\Bridge\Doctrine\Form\Type\EntityType::class, array(
                 'label'=> 'Offre : ',
                 'class' => 'App\Entity\Offreemploi',
                 'mapped' => false,
                 'choice_label' => 'titre',
-                'attr' =>['class' =>'form-controle']))
+                'attr' =>['class' =>'form-controle']));
         ;
     }
 

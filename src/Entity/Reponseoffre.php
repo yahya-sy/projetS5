@@ -17,10 +17,7 @@ class Reponseoffre
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $texte;
+
 
     /**
      * @ORM\OneToOne(targetEntity=Offreemploi::class, mappedBy="reponse", cascade={"persist", "remove"})
@@ -47,21 +44,14 @@ class Reponseoffre
      */
     private $Competences;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $offrechoisie;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTexte(): ?string
-    {
-        return $this->texte;
-    }
-
-    public function setTexte(string $texte): self
-    {
-        $this->texte = $texte;
-
-        return $this;
     }
 
     public function getOffreemploi(): ?Offreemploi
@@ -130,6 +120,18 @@ class Reponseoffre
     public function setCompetences(string $Competences): self
     {
         $this->Competences = $Competences;
+
+        return $this;
+    }
+
+    public function getOffrechoisie(): ?string
+    {
+        return $this->offrechoisie;
+    }
+
+    public function setOffrechoisie(string $offrechoisie): self
+    {
+        $this->offrechoisie = $offrechoisie;
 
         return $this;
     }

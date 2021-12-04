@@ -8,16 +8,25 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Texte</th>
-                <th>actions</th>
+                <th>Id de la réponse</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>email</th>
+                <th>compétences</th>
+                <th>Intitulé du poste</th>
             </tr>
         </thead>
         <tbody>
         {% for reponseoffre in reponseoffres %}
             <tr>
                 <td>{{ reponseoffre.id }}</td>
-                <td>{{ reponseoffre.texte }}</td>
+                <td>{{ reponseoffre.nom }}</td>
+                <td>{{ reponseoffre.prenom }}</td>
+                <td>{{ reponseoffre.email }}</td>
+                <td>{{ reponseoffre.competences }}</td>
+                <td>{{ reponseoffre.offreemploi }}</td>
+
+
                 <td>
                     <a href="{{ path('reponseoffre_show', {'id': reponseoffre.id}) }}">show</a>
                     <a href="{{ path('reponseoffre_edit', {'id': reponseoffre.id}) }}">edit</a>
