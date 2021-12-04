@@ -17,31 +17,41 @@ class Reponseoffre
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $texte;
+
 
     /**
      * @ORM\OneToOne(targetEntity=Offreemploi::class, mappedBy="reponse", cascade={"persist", "remove"})
      */
     private $offreemploi;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Nom;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Prenom;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Competences;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $offrechoisie;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTexte(): ?string
-    {
-        return $this->texte;
-    }
-
-    public function setTexte(string $texte): self
-    {
-        $this->texte = $texte;
-
-        return $this;
     }
 
     public function getOffreemploi(): ?Offreemploi
@@ -62,6 +72,66 @@ class Reponseoffre
         }
 
         $this->offreemploi = $offreemploi;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->Nom;
+    }
+
+    public function setNom(string $Nom): self
+    {
+        $this->Nom = $Nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->Prenom;
+    }
+
+    public function setPrenom(string $Prenom): self
+    {
+        $this->Prenom = $Prenom;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getCompetences(): ?string
+    {
+        return $this->Competences;
+    }
+
+    public function setCompetences(string $Competences): self
+    {
+        $this->Competences = $Competences;
+
+        return $this;
+    }
+
+    public function getOffrechoisie(): ?string
+    {
+        return $this->offrechoisie;
+    }
+
+    public function setOffrechoisie(string $offrechoisie): self
+    {
+        $this->offrechoisie = $offrechoisie;
 
         return $this;
     }

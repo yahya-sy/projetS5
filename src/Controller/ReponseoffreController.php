@@ -35,7 +35,6 @@ class ReponseoffreController extends AbstractController
 
             return $this->redirectToRoute('reponseoffre_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('reponseoffre/new.html.twig', [
             'reponseoffre' => $reponseoffre,
             'form' => $form,
