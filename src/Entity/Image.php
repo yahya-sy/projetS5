@@ -6,7 +6,8 @@ use App\Repository\ImageRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)
  */
@@ -34,6 +35,15 @@ class Image
      * @ORM\JoinColumn(nullable=false)
      */
     private $pagedacceuil;
+
+    private $file;
+
+    /**
+     * @Vich\UploadableField(mapping="article_images", fileNameProperty="file")
+     *
+     * @var File
+     */
+    private $imageFile;
 
     public function getId(): ?int
     {
@@ -73,5 +83,19 @@ class Image
         $this->pagedacceuil = $pagedacceuil;
 
         return $this;
+    }
+
+    /**
+     * @param File $imageFile
+     */
+    public function setImageFile(File $imageFile = null)
+    {
+        $this->imageFile = $file;
+        if($file){
+            $this->createAt = new \DateTime('now');
+        }
+    }
+    public function getImageFile(){
+        return $this->imageFile;
     }
 }
