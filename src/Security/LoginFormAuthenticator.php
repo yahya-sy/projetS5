@@ -22,8 +22,10 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\CustomCredentials;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
+use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
 
-class LoginFormAuthenticator extends AbstractAuthenticator
+
+class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
@@ -31,10 +33,7 @@ class LoginFormAuthenticator extends AbstractAuthenticator
 
     /*private UrlGeneratorInterface $urlGenerator;*/
 
-    public function supports(Request $request): ?bool
-    {
-        return ($request->getPathInfo() === '/login' && $request->isMethod('POST'));
-    }
+
     private RouterInterface $router;
     public function __construct(UserRepository $userRepository, RouterInterface $router)
     {
@@ -64,26 +63,15 @@ class LoginFormAuthenticator extends AbstractAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        /*if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-        // For example:
-        //return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);*/
         return new RedirectResponse($this->router->generate('homepage'));
-
-    }
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
-    {
-        $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
-        return new RedirectResponse(
-            $this->router->generate('app_login')
-        );
 
     }
 
     protected function getLoginUrl(Request $request): string
     {
-        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
+        return $this->router->generate('app_login');
     }
 }
