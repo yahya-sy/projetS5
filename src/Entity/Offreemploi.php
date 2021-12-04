@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OffreemploiRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,16 @@ class Offreemploi
      * @ORM\OneToOne(targetEntity=Reponseoffre::class, inversedBy="offreemploi", cascade={"persist", "remove"})
      */
     private $reponse;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Reponseoffre::class, mappedBy="idoffre", orphanRemoval=true)
+     */
+    private $reponseoffres;
+
+    public function __construct()
+    {
+        $this->reponseoffres = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -79,5 +91,35 @@ class Offreemploi
     public function __toString():string
     {
         return (string)$this->getReponse();
+    }
+
+    /**
+     * @return Collection|Reponseoffre[]
+     */
+    public function getReponseoffres(): Collection
+    {
+        return $this->reponseoffres;
+    }
+
+    public function addReponseoffre(Reponseoffre $reponseoffre): self
+    {
+        if (!$this->reponseoffres->contains($reponseoffre)) {
+            $this->reponseoffres[] = $reponseoffre;
+            $reponseoffre->setIdoffre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReponseoffre(Reponseoffre $reponseoffre): self
+    {
+        if ($this->reponseoffres->removeElement($reponseoffre)) {
+            // set the owning side to null (unless already changed)
+            if ($reponseoffre->getIdoffre() === $this) {
+                $reponseoffre->setIdoffre(null);
+            }
+        }
+
+        return $this;
     }
 }

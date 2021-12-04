@@ -30,7 +30,7 @@ class ReponseoffreType extends AbstractType
                 'attr' => array('style' => 'height:400px')
             ))
 
-            ->add('offrechoisie',\Symfony\Bridge\Doctrine\Form\Type\EntityType::class, array(
+            ->add('idoffre',\Symfony\Bridge\Doctrine\Form\Type\EntityType::class, array(
                 'label'=> 'Offre : ',
                 'class' => 'App\Entity\Offreemploi',
                 'mapped' => false,

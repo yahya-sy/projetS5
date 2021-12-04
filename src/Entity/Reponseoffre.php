@@ -45,9 +45,10 @@ class Reponseoffre
     private $Competences;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity=Offreemploi::class, inversedBy="reponseoffres")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $offrechoisie;
+    private $idoffre;
 
     public function getId(): ?int
     {
@@ -124,14 +125,14 @@ class Reponseoffre
         return $this;
     }
 
-    public function getOffrechoisie(): ?string
+    public function getIdoffre(): ?Offreemploi
     {
-        return $this->offrechoisie;
+        return $this->idoffre;
     }
 
-    public function setOffrechoisie(string $offrechoisie): self
+    public function setIdoffre(?Offreemploi $idoffre): self
     {
-        $this->offrechoisie = $offrechoisie;
+        $this->idoffre = $idoffre;
 
         return $this;
     }
