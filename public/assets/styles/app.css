@@ -13,6 +13,7 @@ div#slider figure {
     font-size: 0;
     text-align: left;
     animation: slidy 15s infinite;
+    clip: rect(0 0 15px 0);
 }
 
 div#slider figure img {
