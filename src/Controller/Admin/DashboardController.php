@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Demandeprojet;
 use App\Entity\Offreemploi;
 use App\Entity\Reponseoffre;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -29,5 +30,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Offre d emploi', 'fas fa-list', Offreemploi::class);
         yield MenuItem::linkToCrud('Réponse offre', 'fas fa-list', Reponseoffre::class);
+        yield MenuItem::linkToCrud('Demande client', 'fas fa-list', Demandeprojet::class);
+
     }
 }

@@ -21,8 +21,10 @@
                 <td>{{ offreemploi.description }}</td>
                 <td>{{ offreemploi.titre }}</td>
                 <td>
-                    <a href="{{ path('offreemploi_show', {'id': offreemploi.id}) }}">show</a>
-                    <a href="{{ path('offreemploi_edit', {'id': offreemploi.id}) }}">edit</a>
+                    <a href="{{ path('offreemploi_show', {'id': offreemploi.id}) }}">Show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('offreemploi_edit', {'id': offreemploi.id}) }}">Edit</a>
+                    {% endif %}
                     <a href="{{ path('reponseoffre_new', {'id': offreemploi.id}) }}">Postuler</a>
                 </td>
             </tr>
@@ -33,6 +35,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="{{ path('offreemploi_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}

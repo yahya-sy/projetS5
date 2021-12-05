@@ -12,11 +12,26 @@ class DemandeprojetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('adresse')
-            ->add('description')
-            ->add('statut')
-            ->add('reponse')
-            ->add('user')
+            ->add('Prenom',null, array(
+                'label' => 'Prénom : ',
+                'attr' => array('style' => 'width: 200px')
+            ))
+            ->add('Nom',null, array(
+                'label' => 'Nom : ',
+                'attr' => array('style' => 'width: 200px')
+            ))
+            ->add('adresse',null, array(
+                'label' => 'Adresse : ',
+                'attr' => array('style' => 'width: 400px')
+            ))
+            ->add('Intitule',null, array(
+                'label' => 'Intitulé : ',
+                'attr' => array('style' => 'width: 400px')
+            ))
+            ->add('Description', null, array(
+                'label' => 'Description : ',
+                'attr' => array('style' => 'height:400px')
+            ))
         ;
     }
 

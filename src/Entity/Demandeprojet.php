@@ -28,20 +28,31 @@ class Demandeprojet
     private $description;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="text",nullable=true)
      */
     private $statut;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean",nullable=true)
      */
     private $reponse;
 
+
+
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="demandes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=20)
      */
-    private $user;
+    private $prenom;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $intitule;
 
     public function getId(): ?int
     {
@@ -72,12 +83,12 @@ class Demandeprojet
         return $this;
     }
 
-    public function getStatut(): ?int
+    public function getStatut(): ?string
     {
         return $this->statut;
     }
 
-    public function setStatut(int $statut): self
+    public function setStatut(string $statut): self
     {
         $this->statut = $statut;
 
@@ -96,14 +107,38 @@ class Demandeprojet
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getPrenom(): ?string
     {
-        return $this->user;
+        return $this->prenom;
     }
 
-    public function setUser(?User $user): self
+    public function setPrenom(string $prenom): self
     {
-        $this->user = $user;
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getIntitule(): ?string
+    {
+        return $this->intitule;
+    }
+
+    public function setIntitule(string $intitule): self
+    {
+        $this->intitule = $intitule;
 
         return $this;
     }

@@ -18,6 +18,7 @@
                     <a class="nav-link" href={{ path('offreemploi_index') }}>Rejoignez-nous</a>
                 </li>
                 {% if is_granted('ROLE_USER') %}
+                    <a class="nav-link text-white-50" href="{{ path('demandeprojet_index') }}">Demandes devis</a>
                     <a class="nav-link text-white-50" href="{{ path('app_logout') }}">Déconnexion</a>
                 {% else %}
                     <a class="nav-link text-white-50" href="{{ path('app_login') }}">Connexion</a>
@@ -28,6 +29,7 @@
                         <a class="nav-link" href="{{ path('admin') }}">Admin</a>
                     </li>
                 {% endif %}
+
 
             </ul>
             <form class="d-flex">
