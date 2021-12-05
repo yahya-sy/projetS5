@@ -16,12 +16,21 @@
         <li class="nav-item">
             <a href=#>Contact</a>
         </li>
+
                 {% if is_granted('ROLE_USER') %}
-                    <a class="nav-link text-white-50" href="{{ path('demandeprojet_index') }}">Demandes devis</a>
-                    <a class="nav-link text-white-50" href="{{ path('app_logout') }}">Déconnexion</a>
+                    <li class="nav-item">
+                        <a href="{{ path('demandeprojet_index') }}">Demandes devis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    </li>
                 {% else %}
-                    <a class="nav-link text-white-50" href="{{ path('app_login') }}">Connexion</a>
-                    <a class="nav-link text-white-50" href="{{ path('app_register') }}">Créer un compte</a>
+                    <li class="nav-item">
+                    <a href="{{ path('app_login') }}">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('app_register') }}">Créer un compte</a>
+                    </li>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
                     <li class="nav-item">
