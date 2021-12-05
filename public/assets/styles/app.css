@@ -66,3 +66,105 @@ table {
 td {
     text-align: center;
 }
+
+/* Nav */
+
+nav{
+    padding: 0;
+    margin: 0;
+    height: 90px;
+    box-sizing: border-box;
+    background-color: #5E3622;
+}
+
+.nav-list{
+    padding: 0;
+    margin-right: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-item{
+    margin-right: 2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.nav-item a{
+    text-decoration: none;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+#Logo{
+    margin-right: auto;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+/* Body */
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.contenu {
+    flex: 1 0 auto;
+}
+
+/* Footer */
+
+footer {
+    flex-shrink: 0;
+    border-top: 1px dashed #0000;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #5E3622;
+}
+
+.contenu-footer {
+    width: 100%;
+    max-height: 150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.bloc {
+    width: 33%;
+    margin: 0;
+}
+
+.ul-image,
+.ul-adresse,
+.ul-lien,
+.a-footer{
+    list-style: none;
+    color: black;
+}
+
+.li-adresse{
+    margin-bottom: 3px;
+}
+
+.ul-lien{
+    text-align: center;
+}
+
+.footer-image{
+    margin: auto;
+    text-align: right;
+}
+
+.ul-lien li,
+.a-footer{
+    text-decoration: none;
+}
+
+.a-footer:hover{
+    color: saddlebrown;
+}
