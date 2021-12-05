@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Reponseoffre;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class ReponseoffreType extends AbstractType
 {
@@ -24,13 +26,19 @@ class ReponseoffreType extends AbstractType
                 'label' => 'Email : ',
                 'attr' => array('style' => 'width: 200px')
             ))
-            ->add('Competences', null, array(
-                'label' => 'Competences : ',
-                'attr' => array('style' => 'height:400px')
-            ))
+
             ->add('idoffre', null, array(
                 'label' => 'Offre : ',
                 'choice_label' => 'titre'))
+
+            ->add('CVFile', FileType::class,[
+                'label' => 'CV : ',
+                'mapped' => true
+            ])
+            ->add('lettreFile', FileType::class,[
+                'label' => 'Lettre de motivation : ',
+                'mapped' => true
+            ])
         ;
     }
 

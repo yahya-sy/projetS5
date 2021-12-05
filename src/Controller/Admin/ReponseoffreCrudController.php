@@ -15,7 +15,7 @@ class ReponseoffreCrudController extends AbstractCrudController
         return Reponseoffre::class;
     }
 
-
+/*
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -27,5 +27,5 @@ class ReponseoffreCrudController extends AbstractCrudController
             TextField::new('idoffre')
         ];
     }
-
+*/
 }
