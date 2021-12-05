@@ -17,8 +17,6 @@ class Reponseoffre
      */
     private $id;
 
-
-
     /**
      * @ORM\OneToOne(targetEntity=Offreemploi::class, mappedBy="reponse", cascade={"persist", "remove"})
      */
@@ -46,7 +44,7 @@ class Reponseoffre
 
     /**
      * @ORM\ManyToOne(targetEntity=Offreemploi::class, inversedBy="reponseoffres")
-     * @ORM\JoinColumn (nullable=false)
+     * @ORM\JoinColumn (nullable=false, referencedColumnName="id")
      */
     private $idoffre;
 

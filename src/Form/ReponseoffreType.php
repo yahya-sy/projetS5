@@ -29,8 +29,9 @@ class ReponseoffreType extends AbstractType
                 'attr' => array('style' => 'height:400px')
             ))
             ->add('idoffre', null, array(
-                'label' => 'Offre : '
-            ));
+                'label' => 'Offre : ',
+                'choice_label' => 'titre'))
+        ;
     }
 
 
