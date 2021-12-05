@@ -199,6 +199,4 @@ class Reponseoffre
     {
         $this->lettreFile = $lettreFile;
     }
-
-
 }
