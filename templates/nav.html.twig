@@ -1,22 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="" href="/"><img class="" alt="Logo" src="/Images/Logo.png" width="50" height="50"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
-                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav>
 
-        <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav me-auto">
-                <li>
-                    <a class="nav-link" href="/">Accueil</a>
-                </li>
-                <li>
-                    <a class="nav-link" href={{ path('article_index') }}>Nos Créations</a>
-                </li>
-                <li>
-                    <a class="nav-link" href={{ path('offreemploi_index') }}>Rejoignez-nous</a>
-                </li>
+    <ul class="nav-list">
+        <li class="nav-item" id="Logo">
+            <a href="/"><img alt="Logo" src="/Images/Logo.png" width="50" height="50"></a>
+        </li>
+        <li class="nav-item">
+            <a href="/">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a href={{ path('article_index') }}>Nos Créations</a>
+        </li>
+        <li class="nav-item">
+            <a href={{ path('offreemploi_index') }}>Recrutement</a>
+        </li>
+        <li class="nav-item">
+            <a href=#>Contact</a>
+        </li>
                 {% if is_granted('ROLE_USER') %}
                     <a class="nav-link text-white-50" href="{{ path('demandeprojet_index') }}">Demandes devis</a>
                     <a class="nav-link text-white-50" href="{{ path('app_logout') }}">Déconnexion</a>
@@ -29,15 +28,5 @@
                         <a class="nav-link" href="{{ path('admin') }}">Admin</a>
                     </li>
                 {% endif %}
-
-
-            </ul>
-            <form class="d-flex">
-                <label>
-                    <input class="form-control me-sm-2" type="text" placeholder="Search">
-                </label>
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
+    </ul>
 </nav>
