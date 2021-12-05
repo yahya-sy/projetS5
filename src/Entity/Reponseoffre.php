@@ -46,7 +46,7 @@ class Reponseoffre
 
     /**
      * @ORM\ManyToOne(targetEntity=Offreemploi::class, inversedBy="reponseoffres")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn (nullable=false)
      */
     private $idoffre;
 
