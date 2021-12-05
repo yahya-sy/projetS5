@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Article;
 use App\Entity\Demandeprojet;
 use App\Entity\Offreemploi;
 use App\Entity\Reponseoffre;
@@ -32,8 +33,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Offre d emploi', 'fas fa-list', Offreemploi::class);
         yield MenuItem::linkToCrud('Réponse offre', 'fas fa-list', Reponseoffre::class);
         yield MenuItem::linkToCrud('Demande client', 'fas fa-list', Demandeprojet::class);
-
-
-        yield MenuItem::linkToCrud('Image', 'fas fa-list', Image::class);
+        yield MenuItem::linkToCrud('Article', 'fas fa-list', Article::class);
     }
 }

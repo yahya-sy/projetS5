@@ -6,9 +6,12 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -30,9 +33,33 @@ class Article
     private $texte;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Image::class, inversedBy="ref")
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
-    private $images;
+    private $image;
+
+    /**
+     * @return string/null
+     */
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string/null $image
+     * return $this
+     */
+    public function setImage($image): self
+    {
+        $this->image = $image;
+        return $this;
+    }
+
+    /**
+     * @Vich\UploadableField(mapping="article_image",fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="articles")
@@ -41,7 +68,6 @@ class Article
 
     public function __construct()
     {
-        $this->images = new ArrayCollection();
         $this->users = new ArrayCollection();
     }
 
@@ -75,32 +101,19 @@ class Article
     }
 
     /**
-     * @return Collection|Images[]
+     * @return File/null
      */
-    public function getImages(): Collection
+    public function getImageFile(): ?File
     {
-        return $this->images;
+        return $this->imageFile;
     }
 
-    public function addImages(Image $images): self
+    /**
+     * @param File/null $imageFile
+     */
+    public function setImageFile(?File $imageFile): void
     {
-        if (!$this->images->contains($images)) {
-            $this->images[] = $images;
-        }
-
-        return $this;
-    }
-
-    public function removeImages(Image $images): self
-    {
-            if ($this->images->contains($image)) {
-                $this->images->removeElement($image);
-                // set the owning side to null (unless already changed)
-                if ($image->getArticles() === $this) {
-                    $image->setArticles(null);
-                }
-            }
-            return $this;
+        $this->imageFile = $imageFile;
     }
 
     /**
