@@ -14,28 +14,28 @@
             <a href={{ path('offreemploi_index') }}>Recrutement</a>
         </li>
         <li class="nav-item">
-            <a href=#>Contact</a>
+            <a href="#li-footer">Contact</a>
         </li>
 
-                {% if is_granted('ROLE_USER') %}
-                    <li class="nav-item">
-                        <a href="{{ path('demandeprojet_index') }}">Demandes devis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_logout') }}">Déconnexion</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                    <a href="{{ path('app_login') }}">Connexion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_register') }}">Créer un compte</a>
-                    </li>
-                {% endif %}
-                {% if is_granted('ROLE_ADMIN') %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('admin') }}">Admin</a>
-                    </li>
-                {% endif %}
+        {% if is_granted('ROLE_USER') %}
+            <li class="nav-item">
+                <a href="{{ path('demandeprojet_index') }}">Demandes devis</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a href="{{ path('app_login') }}">Connexion</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('app_register') }}">Créer un compte</a>
+            </li>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('admin') }}">Admin</a>
+            </li>
+        {% endif %}
     </ul>
 </nav>
