@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Pagedacceuil{% endblock %}
+
+{% block body %}
+    <h1>Create new Pagedacceuil</h1>
+
+    {{ include('pagedacceuil/_form.html.twig') }}
+
+    <a href="{{ path('pagedacceuil_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pagedacceuil index{% endblock %}
+
+{% block body %}
+
+    <h1>Pagedacceuil index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pagedacceuil in pagedacceuils %}
+            <tr>
+                <td>{{ pagedacceuil.id }}</td>
+                <td>
+                    <a href="{{ path('pagedacceuil_edit', {'id': pagedacceuil.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('pagedacceuil_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reponseoffre{% endblock %}
+
+{% block body %}
+    <h1>Reponseoffre</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reponseoffre.id }}</td>
+            </tr>
+            <tr>
+                <th>Texte</th>
+                <td>{{ reponseoffre.texte }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('reponseoffre_index') }}">back to list</a>
+
+    <a href="{{ path('reponseoffre_edit', {'id': reponseoffre.id}) }}">edit</a>
+
+    {{ include('reponseoffre/_delete_form.html.twig') }}
+{% endblock %}

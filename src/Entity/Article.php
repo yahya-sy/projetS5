@@ -6,9 +6,12 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -30,9 +33,33 @@ class Article
     private $texte;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Image::class, inversedBy="ref")
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
-    private $galerie;
+    private $image;
+
+    /**
+     * @return string/null
+     */
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string/null $image
+     * return $this
+     */
+    public function setImage($image): self
+    {
+        $this->image = $image;
+        return $this;
+    }
+
+    /**
+     * @Vich\UploadableField(mapping="article_image",fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="articles")
@@ -41,7 +68,6 @@ class Article
 
     public function __construct()
     {
-        $this->galerie = new ArrayCollection();
         $this->users = new ArrayCollection();
     }
 
@@ -75,27 +101,19 @@ class Article
     }
 
     /**
-     * @return Collection|Image[]
+     * @return File/null
      */
-    public function getGalerie(): Collection
+    public function getImageFile(): ?File
     {
-        return $this->galerie;
+        return $this->imageFile;
     }
 
-    public function addGalerie(Image $galerie): self
+    /**
+     * @param File/null $imageFile
+     */
+    public function setImageFile(?File $imageFile): void
     {
-        if (!$this->galerie->contains($galerie)) {
-            $this->galerie[] = $galerie;
-        }
-
-        return $this;
-    }
-
-    public function removeGalerie(Image $galerie): self
-    {
-        $this->galerie->removeElement($galerie);
-
-        return $this;
+        $this->imageFile = $imageFile;
     }
 
     /**
@@ -127,4 +145,5 @@ class Article
 
         return $this;
     }
+
 }

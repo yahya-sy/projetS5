@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demandeprojet index{% endblock %}
+
+{% block body %}
+    <h1>Demandeprojet index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Intitule</th>
+                <th>Statut</th>
+                <th>Reponse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demandeprojet in demandeprojets %}
+            <tr>
+                <td>{{ demandeprojet.id }}</td>
+                <td>{{ demandeprojet.nom }}</td>
+                <td>{{ demandeprojet.intitule }}</td>
+                <td>{{ demandeprojet.statut }}</td>
+                <td>{{ demandeprojet.reponse ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('demandeprojet_show', {'id': demandeprojet.id}) }}">show</a>
+                    <a href="{{ path('demandeprojet_edit', {'id': demandeprojet.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('demandeprojet_new') }}">Create new</a>
+{% endblock %}
