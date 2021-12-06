@@ -14,7 +14,6 @@ class OffreemploiType extends AbstractType
         $builder
             ->add('description')
             ->add('titre')
-            ->add('reponse')
         ;
     }
 
