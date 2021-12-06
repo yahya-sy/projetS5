@@ -3,7 +3,6 @@
 
     {# Si la route est "article_edit on affiche les images #}
 	{% if app.request.attributes.get('_route') == 'article_edit' %}
-        <h2>Images</h2>
         {% for image in article.image %}
             <div>
                 <img src="{{ asset('/uploads/'~image.name) }}" alt="" width="150">
@@ -13,5 +12,5 @@
             </div>
         {% endfor %}
     {% endif %}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="btn btn-secondary">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

@@ -7,7 +7,7 @@
 
     {{ include('offreemploi/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('offreemploi_index') }}">back to list</a>
+    <a class="btn btn-primary" href="{{ path('offreemploi_index') }}">back to list</a>
 
     {{ include('offreemploi/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,7 +1,19 @@
 /* Nav */
-
+.btn-primary,.btn-warning,.btn-secondary, .btn{
+    width: max-content;
+    margin: 5px;
+}
+.btn-warning{
+    background-color: firebrick;
+}
+.btn-secondary{
+    background-color: cornflowerblue;
+}
+.table{
+    text-align: center;
+}
 nav{
-    padding: 0;
+    padding-top: 15px;
     margin: 0;
     height: 90px;
     box-sizing: border-box;
@@ -27,6 +39,7 @@ nav{
     text-decoration: none;
     color: white;
     letter-spacing: 0.5px;
+
 }
 
 #Logo{
