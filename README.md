@@ -17,4 +17,4 @@ mdp   : 1234<br>
   -USER : <br>
 email : lucas_user@example.com<br>
 mdp   : 1234<br>
-Vous avez également la possibilité de créer des compte pour vous balader en tant qu'USER et accéder à certaines de nos fonctionnalités<br>
+Vous avez également la possibilité de créer des comptes pour vous balader en tant qu'USER et accéder à certaines de nos fonctionnalités<br>
