@@ -15,7 +15,9 @@
 
 <body>
 {% include 'nav.html.twig' %}
+<div class="bloc_principal">
 {% block body %} {% endblock %}
+</div>
 {% include 'footer.html.twig' %}
 {% block javascripts %}
     {# {{ encore_entry_script_tags('app') }} #}

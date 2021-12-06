@@ -1,3 +1,9 @@
+body{
+    margin:0;
+}
+.bloc_principal{
+    min-height: calc(100vh - 230px)
+}
 /* Nav */
 .btn-primary,.btn-warning,.btn-secondary, .btn{
     width: max-content;
