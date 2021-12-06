@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Offreemploi index</h1>
 
-    <table class="table">
+    <table class="table table-hover table-borderless">
         <thead>
             <tr>
                 <th>Id</th>
@@ -21,11 +21,11 @@
                 <td>{{ offreemploi.description }}</td>
                 <td>{{ offreemploi.titre }}</td>
                 <td>
-                    <a href="{{ path('offreemploi_show', {'id': offreemploi.id}) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ path('offreemploi_show', {'id': offreemploi.id}) }}">Show</a>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('offreemploi_edit', {'id': offreemploi.id}) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ path('offreemploi_edit', {'id': offreemploi.id}) }}">Edit</a>
                     {% endif %}
-                    <a href="{{ path('reponseoffre_new', {'id': offreemploi.id}) }}">Postuler</a>
+                    <a class="btn btn-primary" href="{{ path('reponseoffre_new', {'id': offreemploi.id}) }}">Postuler</a>
                 </td>
             </tr>
         {% else %}
@@ -36,6 +36,6 @@
         </tbody>
     </table>
     {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('offreemploi_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('offreemploi_new') }}">Create new</a>
     {% endif %}
 {% endblock %}

@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Reponseoffre index</h1>
 
-    <table class="table">
+    <table class="table table-hover table-borderless">
         <thead>
             <tr>
                 <th>Id de la réponse</th>
@@ -28,8 +28,8 @@
 
 
                 <td>
-                    <a href="{{ path('reponseoffre_show', {'id': reponseoffre.id}) }}">show</a>
-                    <a href="{{ path('reponseoffre_edit', {'id': reponseoffre.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('reponseoffre_show', {'id': reponseoffre.id}) }}">show</a>
+                    <a class="btn btn-primary" href="{{ path('reponseoffre_edit', {'id': reponseoffre.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -39,6 +39,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('reponseoffre_new') }}">Create new</a>
 {% endblock %}
