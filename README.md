@@ -10,7 +10,7 @@ Tapez `php bin/console doctrine:migrations:migrate` dans votre terminal afin de 
 Commencez par taper dans votre terminal `symfony serve`<br>
 Pour pouvoir utiliser notre site, rendez-vous <a href="https://127.0.0.1:8000/acceuil/new">ici</a> puis cliquez sur le bouton `Save`<br>
 Une fois cela fait, rendez-vous <a href="https://127.0.0.1:8000/">ici</a><br>
-Pour avoir accès aux différentes parties du site, nous avons crée des utilisateurs :<br>
+Pour avoir accès aux différentes parties du site, nous avons créé des utilisateurs :<br>
   -ADMIN  : <br>
 email : yahya_admin@example.com<br>
 mdp   : 1234<br>
