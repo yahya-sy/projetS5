@@ -2,6 +2,7 @@ body{
     margin:0;
 }
 .bloc_principal{
+    margin: auto;
     min-height: calc(100vh - 230px)
 }
 /* Nav */
